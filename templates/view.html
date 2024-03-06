@@ -1,0 +1,50 @@
+
+
+
+
+
+{%extends 'home.html'%}
+{%block body_block%}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">
+
+<div class="panel panel-default">
+
+  <div class="panel-body">
+      <div class="row" style="width:100%">
+    <div class="col-sm-4" style="width:100%">
+        <img src="{{student.profile_pic.url}}"   alt="profilepic"
+             height="100px" ></div>
+    <div class="col-4"></div>
+      </div>
+
+ <div class="row">
+
+     <div class="col-sm-6"> <h5  >Id  :{{student.id}}</h5>
+            <h5  >Name : {{student.name}}</h5>
+              <h5 class="card-title">Address: {{student.address}}</h5>
+     <h5 class="card-title">Mobile: {{student.mobile}}</h5>
+ <h5 class="card-title">Email : {{student.email}}</h5>
+
+  </div>
+
+<div class="col-sm-6"></div>
+</div>
+  </div>
+</div>
+    </div>
+        <div class="col-sm-8"> </div>
+
+</div>
+
+{%endblock%}
+
+
+
+
+
+
+
+

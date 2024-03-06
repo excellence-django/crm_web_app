@@ -1,0 +1,80 @@
+{%extends 'home.html'%}
+{%block body_block%}
+{% block javascript %}
+<script>
+$(document).ready(function() {
+
+    $('#id_e_id').change(function(){
+
+        var serializedData = $(this).serialize();
+        var v=$('#id_e_id').val();
+
+
+
+         if(v==""){
+        $("#id_details").val("");
+$("#id_fees").val("");
+$("#id_student").val("");
+$("#id_couse").val("");
+v=0;$("#id_status_0").prop('checked', false);
+$("#id_status_1").prop('checked', false);
+
+        }
+
+
+        $.ajax({
+            type: 'POST',
+              url: "http://127.0.0.1:8000/student_app/team_info/"+v,
+
+             data: {csrfmiddlewaretoken: '{{ csrf_token }}','erid' : '10' },
+            success: function (response) {
+var instance = response["Student"];
+$("#id_details").val(response["details"]);
+$("#id_fees").val(response["fees"]);
+$("#id_student").val(response["Student"]);
+$("#id_couse").val(response["Course"]);
+
+if(response["status"]=="Paid"){
+$("#id_status_0").prop('checked', true);
+}
+
+  if(response["status"]=="Not paid"){
+$("#id_status_1").prop('checked', true);
+}
+
+
+
+
+            },
+            error: function (response) {
+                // alert the error if any error occured
+                alert(response["responseJSON"]["error"]);
+            }
+        })
+    });
+}); </script>{% endblock javascript %}
+<div class="container-fluid">
+
+   <div class="row">
+       <div class="col-sm-2"> </div>
+        <div class="col-sm-6">
+            <form action="" method="post" enctype="multipart/form-data" class="col-5">
+                {%csrf_token%}
+                {{forms.as_p}}
+                <div class="mb-3">
+                  <div class="text-center">
+<button type="submit" class="btn btn-primary">Update</button>
+</div>
+                </div>
+            </form></div>
+        <div class="col-sm-4"> </div>
+   </div>
+
+</div>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+{%endblock%}

@@ -1,0 +1,40 @@
+{%extends 'home.html'%}
+{%block body_block%}
+<div class="container">
+     <div class="row">
+    <div class="col-sm-2"></div>
+         <div class="col-sm-8">
+              {%if messages%}
+                {%for msg in messages%}
+ {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <div class="alert alert-success" style="float:left">
+
+  </div>
+
+{%endif%}
+
+{% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+             <div class="alert alert-danger"  style="float:left">
+
+   </div>
+
+{%endif%}
+                {%endfor%}
+            {%endif%}
+         </div>
+      <div class="col-sm-2">  </div></div>
+  <div class="row">
+
+    <div class="col-sm-10">
+
+
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ {%endblock%}

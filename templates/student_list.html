@@ -1,0 +1,72 @@
+{%extends 'home.html'%}
+{%block body_block%}
+<div class="container">
+     <div class="row">
+    <div class="col-sm-2"></div>
+         <div class="col-sm-8">
+              {%if messages%}
+                {%for msg in messages%}
+ {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+  <div class="alert alert-success" style="float:left">
+       {{msg}}!
+  </div>
+
+{%endif%}
+
+{% if msg.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+             <div class="alert alert-danger"  style="float:left">
+                  {{msg}}!
+   </div>
+
+{%endif%}
+                {%endfor%}
+            {%endif%}
+         </div>
+      <div class="col-sm-2">  </div></div>
+  <div class="row">
+
+    <div class="col-sm-10">
+
+ <a href="{%url 'signup'%}" style="float:right;margin-bottom:5px" class="btn btn-primary">New Student</a>
+       <table class="table table-striped">
+
+
+
+      <tr>
+
+        <th>Slno</th>
+        <th>Rollno</th>
+        <th>name</th>
+        <th>Address</th>
+        <th>Mobile</th>
+      <th> Email</th>
+    <th>  </th>
+      </tr>
+
+      {%for std in students %}
+      <tr>
+          <td> {{ forloop.counter }}</td>
+        <td>{{std.rollno}}</td>
+        <td><img src="{{std.profile_pic.url}}" class="rounded-circle" alt="Cinque Terre" height="25px" width="25px"/>{{std.name}}</td>
+        <td>{{std.address}}</td>
+        <td>{{std.mobile}}</td>
+<td>{{std.email}}</td>
+        <td>
+            <a href="{%url 'std-details' std.rollno%}"><span class="glyphicon glyphicon-eye-open" style="color:blue"></span></a>
+          <a href="{%url 'std-eid' std.rollno%}"><span class="glyphicon glyphicon-edit" style="color:green"></span></a>
+          <a href="{%url 'delete' std.rollno%}"><span class="glyphicon glyphicon-trash" style="color:red"></span></a></td>
+      </tr>
+      {%endfor%}
+
+      </table>
+
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ {%endblock%}

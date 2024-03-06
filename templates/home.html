@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{%load static%}
+
+ <html lang="en">
+<head>
+  <title>Student Management</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"style=" float:right;color:red">Excellence</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li class=""><a href="{%url 'home'%}" style=" float:right;color:black">Home</a></li>
+
+
+      </li>
+      <li class=""><a href="{%url 'list'%}" style=" float:right;color:black">Student</a></li>
+
+
+      </li><li >         <a   href="{%url 'clist'%}" style=" float:right;color:black">Course
+        </a>
+        </li>
+        <li  >
+        <a   href="{%url 'elist'%}" style=" float:right;color:black">Enroll
+        </a>
+      </li>
+         <li  >
+        <a   href="{%url 'sview'%}" style=" float:right;color:black">Paid/unpaid
+        </a>
+      </li>
+    </ul>
+       <ul class="nav navbar-nav navbar-right">
+           <li ><a href="{%url 'logout'%}" style=" float:right;color:black"> <span class="glyphicon glyphicon-off"></span>Signout</a>
+</li>
+
+    </ul>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+   <div class="row">
+
+      <div class="col-4"> </div>
+      <div class="col-4"> </div>
+      <div class="col-4"> </div>
+  </div>
+  <div class="row">
+
+      <div class="col-sm-2"  ></div>
+    <div class="col-sm-9"  >{%block body_block%}
+                    {%endblock%}</div>
+    <div class="col-sm-1"  ></div>
+  </div>
+
+</div>
+
+</body>
+</html>
